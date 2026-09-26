@@ -1,0 +1,661 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background: #f5f7fb;
+    color: #202124;
+    min-height: 100vh;
+}
+
+.app {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding: 8px 4px;
+}
+
+.logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+.app-header h1 {
+    font-size: 27px;
+    margin-bottom: 4px;
+}
+
+.app-header p {
+    font-size: 14px;
+    color: #777;
+    direction: ltr;
+    text-align: right;
+}
+
+.sections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.section-card {
+    border: none;
+    background: #ffffff;
+    min-height: 78px;
+    border-radius: 20px;
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.section-card span {
+    font-size: 22px;
+}
+
+.section-card strong {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.section-card:active {
+    transform: scale(0.96);
+}
+
+.ai-card {
+    background: #202124;
+    color: #ffffff;
+}
+
+.ai-card strong {
+    font-size: 14px;
+    direction: ltr;
+}
+
+.add-card {
+    border: 2px dashed #c9ced8;
+    background: transparent;
+    color: #697386;
+    box-shadow: none;
+}
+
+.add-card span {
+    font-size: 32px;
+}
+
+@media (max-width: 360px) {
+    .sections {
+        grid-template-columns: 1fr;
+    }
+
+    .section-card {
+        min-height: 78px;
+    }
+}
+
+/* صفحه داخلی بخش‌ها */
+
+.back-button {
+    border: none;
+    background: #ffffff;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.section-page {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.add-note-button {
+    width: 100%;
+    min-height: 58px;
+    border: 2px dashed #c9ced8;
+    border-radius: 18px;
+    background: #ffffff;
+    color: #4f596b;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.empty-note {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 24px 18px;
+    text-align: center;
+    color: #8a919f;
+    font-size: 14px;
+}
+
+/* فرم افزودن یادداشت */
+
+.note-form {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.note-form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4f596b;
+    margin-top: 4px;
+}
+
+.note-form input,
+.note-form textarea {
+    width: 100%;
+    border: 1px solid #d9dde5;
+    border-radius: 14px;
+    padding: 13px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    background: #f9fafc;
+    color: #202124;
+    outline: none;
+    direction: rtl;
+}
+
+.note-form textarea {
+    min-height: 180px;
+    resize: vertical;
+    line-height: 1.8;
+}
+
+.note-form input:focus,
+.note-form textarea:focus {
+    border-color: #9aa4b5;
+    background: #ffffff;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.save-note-button,
+.cancel-note-button {
+    flex: 1;
+    min-height: 50px;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.save-note-button {
+    border: none;
+    background: #202124;
+    color: #ffffff;
+}
+
+.cancel-note-button {
+    border: 1px solid #d9dde5;
+    background: #ffffff;
+    color: #555e6f;
+}
+
+/* یادداشت های ذخیره شده */
+
+.note-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.note-card h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: #202124;
+}
+
+.note-card p {
+    font-size: 14px;
+    line-height: 2;
+    color: #555e6f;
+    white-space: normal;
+}
+
+/* وضعیت ذخیره خودکار */
+
+.autosave-status {
+    font-size: 12px;
+    color: #6f7785;
+    text-align: center;
+    min-height: 20px;
+}
+
+/* دکمه های یادداشت */
+
+.note-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.edit-note-button,
+.delete-note-button {
+    flex: 1;
+    min-height: 42px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.edit-note-button {
+    border: 1px solid #d9dde5;
+    background: #f9fafc;
+    color: #4f596b;
+}
+
+.delete-note-button {
+    border: 1px solid #e0d2d2;
+    background: #fff8f8;
+    color: #8a4b4b;
+}
+
+/* مدیریت بخش های سفارشی */
+
+.custom-section-card {
+    position: relative;
+    padding: 10px 8px;
+}
+
+.custom-section-main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.custom-section-actions {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: flex;
+    gap: 3px;
+}
+
+.custom-edit-button,
+.custom-delete-button {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.custom-edit-button {
+    border: 1px solid #d9dde5;
+    background: #ffffff;
+}
+
+.custom-delete-button {
+    border: 1px solid #e0d2d2;
+    background: #fff8f8;
+}
+
+
+/* دکمه افزودن یادداشت - صورتی و سفید */
+
+.add-note-button {
+    border: 2px dashed #f3a6bd;
+    background: #fff4f7;
+    color: #d85b82;
+    box-shadow: 0 4px 12px rgba(216, 91, 130, 0.08);
+    transition: 0.2s ease;
+}
+
+.add-note-button:hover {
+    background: #ffe9f0;
+    border-color: #e98aa7;
+}
+
+.add-note-button:active {
+    background: #ffdce7;
+    transform: scale(0.98);
+}
+
+
+/* کتابخانه ایموجی */
+
+.emoji-library-page {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.add-emoji-button {
+    width: 100%;
+    min-height: 58px;
+    border: 2px dashed #f3a6bd;
+    border-radius: 18px;
+    background: #fff4f7;
+    color: #d85b82;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(216, 91, 130, 0.08);
+}
+
+.add-emoji-button:active {
+    background: #ffdce7;
+    transform: scale(0.98);
+}
+
+.emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.emoji-item {
+    min-height: 58px;
+    border: 1px solid #f1d5de;
+    border-radius: 16px;
+    background: #ffffff;
+    font-size: 27px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.emoji-item:active {
+    background: #fff0f4;
+    transform: scale(0.94);
+}
+
+
+/* انتخاب ایموجی برای بخش */
+
+.emoji-picker-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.emoji-picker-box {
+    width: 100%;
+    max-width: 420px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 18px;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+}
+
+.emoji-picker-title {
+    margin: 0 0 14px;
+    text-align: center;
+    color: #d85b82;
+    font-size: 17px;
+}
+
+.emoji-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 9px;
+}
+
+.emoji-picker-item {
+    min-height: 54px;
+    border: 1px solid #f1d5de;
+    border-radius: 14px;
+    background: #fffafb;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.emoji-picker-item:active {
+    background: #ffe8ef;
+    transform: scale(0.94);
+}
+
+.emoji-picker-cancel {
+    width: 100%;
+    margin-top: 14px;
+    min-height: 48px;
+    border: 1px solid #e4e4e4;
+    border-radius: 14px;
+    background: #f7f7f7;
+    color: #666666;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* =========================
+   My AI
+   ========================= */
+
+.my-ai-page {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: calc(100vh - 150px);
+}
+
+.my-ai-chat {
+    flex: 1;
+    min-height: 420px;
+    padding: 14px;
+    border-radius: 20px;
+    background: #f7f7f8;
+    border: 1px solid #e7e7ea;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.my-ai-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+}
+
+.ai-message {
+    justify-content: flex-start;
+}
+
+.user-message {
+    justify-content: flex-end;
+}
+
+.my-ai-avatar {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #202124;
+    font-size: 18px;
+}
+
+.my-ai-bubble {
+    max-width: 78%;
+    padding: 10px 13px;
+    border-radius: 16px;
+    line-height: 1.8;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.ai-message .my-ai-bubble {
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #e8e8eb;
+    border-top-right-radius: 5px;
+}
+
+.user-message .my-ai-bubble {
+    background: #d85b82;
+    color: #ffffff;
+    border-top-left-radius: 5px;
+}
+
+.my-ai-input-area {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.my-ai-input {
+    flex: 1;
+    min-height: 52px;
+    max-height: 130px;
+    padding: 12px;
+    border: 1px solid #e1e1e5;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #333333;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.my-ai-input:focus {
+    border-color: #d85b82;
+    box-shadow: 0 0 0 3px rgba(216, 91, 130, 0.10);
+}
+
+.my-ai-send {
+    min-width: 78px;
+    min-height: 52px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 16px;
+    background: #202124;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.my-ai-send:active {
+    transform: scale(0.96);
+}
+
+
+.my-ai-bubble {
+    position: relative;
+}
+
+.my-ai-copy-button {
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #777777;
+    font-family: inherit;
+    font-size: 17px;
+    line-height: 28px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.my-ai-copy-button:active {
+    transform: scale(0.92);
+}
+
+.my-ai-response-content {
+    padding-top: 28px;
+}
+
+.my-ai-copy-button:active {
+    background: #eeeeef;
+    transform: scale(0.96);
+}
+
+
+/* رنگ‌بندی عنوان یادداشت‌ها */
+.note-list-item {
+    border: none;
+    border-radius: 16px;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    direction: rtl;
+}
+
+.note-list-item:nth-child(odd) {
+    background: #ffe1ec;
+    color: #9c3f61;
+}
+
+.note-list-item:nth-child(even) {
+    background: #fff1b8;
+    color: #806600;
+}
+
