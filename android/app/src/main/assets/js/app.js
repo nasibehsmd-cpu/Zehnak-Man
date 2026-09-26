@@ -1522,24 +1522,64 @@ function renderCustomSections() {
 
 
 function addSection() {
-    const sectionName = prompt("نام بخش جدید را وارد کن:");
-
-    if (!sectionName || !sectionName.trim()) {
-        return;
+    const existing = document.querySelector(".add-section-overlay");
+    if (existing) {
+        existing.remove();
     }
 
-    const name = sectionName.trim();
+    const overlay = document.createElement("div");
+    overlay.className = "add-section-overlay";
 
-    const sections = JSON.parse(
-        localStorage.getItem("nasibehMyAiSections") || "[]"
-    );
+    overlay.innerHTML = `
+        <div class="add-section-box">
+            <h3>افزودن بخش جدید</h3>
 
-    if (sections.includes(name)) {
-        alert("این بخش قبلاً وجود دارد.");
-        return;
-    }
+            <input
+                id="newSectionName"
+                type="text"
+                placeholder="نام بخش را وارد کن"
+                autocomplete="off"
+            >
 
-    openSectionEmojiPicker(name);
+            <div class="add-section-actions">
+                <button type="button" id="saveNewSection">ذخیره</button>
+                <button type="button" id="cancelNewSection">انصراف</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const input = document.getElementById("newSectionName");
+    const saveButton = document.getElementById("saveNewSection");
+    const cancelButton = document.getElementById("cancelNewSection");
+
+    input.focus();
+
+    cancelButton.addEventListener("click", () => {
+        overlay.remove();
+    });
+
+    saveButton.addEventListener("click", () => {
+        const name = input.value.trim();
+
+        if (!name) {
+            input.focus();
+            return;
+        }
+
+        const sections = JSON.parse(
+            localStorage.getItem("nasibehMyAiSections") || "[]"
+        );
+
+        if (sections.includes(name)) {
+            alert("این بخش قبلاً وجود دارد.");
+            return;
+        }
+
+        overlay.remove();
+        openSectionEmojiPicker(name);
+    });
 }
 
 function openSectionEmojiPicker(sectionName) {
