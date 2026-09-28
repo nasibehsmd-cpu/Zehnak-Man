@@ -396,6 +396,135 @@ body {
     transform: scale(0.98);
 }
 
+.add-emoji-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    direction: rtl;
+}
+
+.add-emoji-box {
+    width: min(88%, 360px);
+    padding: 22px;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.add-emoji-box h3 {
+    margin: 0 0 18px;
+    font-size: 18px;
+}
+
+.add-emoji-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 24px;
+    text-align: center;
+    direction: ltr;
+    outline: none;
+}
+
+.add-emoji-box input:focus {
+    border-color: #e91e63;
+}
+
+.add-emoji-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.add-emoji-actions button {
+    flex: 1;
+    border: none;
+    border-radius: 12px;
+    padding: 11px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#saveNewEmoji {
+    background: #e91e63;
+    color: white;
+}
+
+#cancelNewEmoji {
+    background: #eeeeee;
+    color: #444444;
+}
+
+.delete-note-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    direction: rtl;
+}
+
+.delete-note-box {
+    width: min(88%, 360px);
+    padding: 22px;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.delete-note-box h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+
+.delete-note-box p {
+    margin: 0;
+    color: #555e6f;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.delete-note-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.delete-note-actions button {
+    flex: 1;
+    min-height: 48px;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#confirmDeleteNote {
+    background: #d32f2f;
+    color: #ffffff;
+}
+
+#cancelDeleteNote {
+    background: #eeeeee;
+    color: #444444;
+}
+
 .emoji-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
